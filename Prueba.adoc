@@ -1,0 +1,69 @@
+:toc: 
+:sectnums:
+:imagesdir: C:\Users\Jaleab\Desktop\OpenVPN
+<<<
+== Configuración de la VPN para ambiente gráfico en Linux
+
+Para configurar la VPN que le permitirá usar la NAC desde su computador Linux y usando
+ambiente gráfico, ejecute los siguientes pasos:
+
+. Instale el complemento de OpenVPN para NetworkManager.
+. Obtenga el certificado de la Autoridad Certificadora.
+. Configure el acceso a la VPN a través de NetworkManager.
+
+=== Instale el complemento de OpenVPN para NetworkManager.
+Instale el componente de OpenVPN para el gestor de red NetworkManager de su computador.
+La instalación requiere permisos de root.
+
+En Redhat/CentOS/Fedora: ::
+* sudo yum install NetworkManager-openvpn
+
+En Debian/Ubuntu: ::
+* sudo apt-get install network-manager-openvpn \ +  
+ network-manager-openvpn-gnome
+
+=== Obtenga el certificado de la Autoridad Certificadora
+Durante la configuración de la conexión OpenVPN debe especificar el certificado digital de la
+Autoridad Certificadora de la UCR, que es verificada durante la conexión de su computador con los
+servidores de la VPN. Obtenga el certificado del repositorio de gestión en la NAC, en la dirección: 
+
+[.text-center]
+*Para el curso será provista por el profesor*
+
+Coloque el archivo _canucleov01.crt_ en un directorio de su computador donde esté protegido
+apropiadamente para que no sea borrado accidentalmente. No se requiere proteger el archivo de lectura
+contra terceros, por cuanto contiene una llave pública, pero sí es importante protegerlo contra
+modificaciones, por ello se sugiere que el dueño y el grupo del archivo sean root y los permisos de
+acceso en el sistema de archivos queden como _644_. Para el caso de un sistema Linux se sugiere
+colocarlo en la ruta _/etc/openvpn_, recuerde que el acceso a esta ruta requiere permisos de _root_.
+
+
+=== Configure el acceso a la VPN a través de NetworkManager
+
+Ingrese a la configuración gráfica del NetworkManager, a la sección de VPN y presione el
+botón de Agregar una nueva conexión, seleccione el tipo OpenVPN y complete la configuración
+usando como referencia las indicaciones a continuación: 
+
+	image::figura1.png["Figura 1",align="left"]
+	
+ - Nombre de la conexión: se sugiere el nombre vpn.ucr.ac.cr. 
+ - Puerta de enlace: 163.178.161.4 
+ - Tipo de autenticación: seleccione la opción de Password. 
+ - Usuario y contraseña: escriba el usuario y contraseña que le hayan sido asignados para
+acceso a la VPN. 
+ - Certificado de la CA: seleccione la ruta del archivo que contiene el certificado de la
+Autoridad Certificadora indicado en la sección 1.2
+
+Luego haga click en el botón Avanzado y en la pantalla siguiente seleccione la opción de Usar
+Compresión de Datos LZO, según se muestra en la Fig. 2.
+
+== Configuración de las VPNs desde la línea de comandos en Linux
+=== Instale el paquete OpenVPN
+=== Obtenga el certificado de la Autoridad Certificadora
+=== Configure el servicio para acceso a la VPN
+== Configuración de la VPN para Microsoft Windows
+=== Instale el paquete OpenVPN
+=== Obtenga el certificado de la Autoridad Certificadora
+=== Configure el servicio para acceso a la VPN
+== Resolución de problemas y preguntas frecuentes
+== Enlaces de acceso a la Nube Académica Computacional
